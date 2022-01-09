@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vehicles list</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="main">
+    <nav class="grid-container full">
+        <p>Vehicles List</p>
+    </nav>
+    <div class="grid-container wrapper">
+        <div class="grid-x search">
+            <div class="cell small-12 large-4">
+                <button class="primary button" onclick="openModal()">Add Vehicle <i class="fa fa-plus"></i></button>
+            </div>
+            <div class="cell small-12 large-8">
+                <div class="input-group">
+                    <span class="input-group-label"><i class="fa fa-search"></i></span>
+                    <input class="input-group-field" onkeyup="showVehicles(this.value)" placeholder="Search vehicle"
+                           type="text">
+                </div>
+            </div>
+        </div>
+        <div>
+            <table class="hover">
+                <thead>
+                <tr>
+                    <th width="100">#</th>
+                    <th width="200">Brand</th>
+                    <th width="200">Model</th>
+                    <th>Description</th>
+                    <th width="150">Capacity</th>
+                    <th width="150">Actions</th>
+                </tr>
+                </thead>
+                <tbody id="vehicleListing">
+                </tbody>
+            </table>
+            <div id="content">
+
+            </div>
+        </div>
+        <div id="myModal" class="modal">
+            <form name="input-form" onsubmit="return false" data-abide novalidate>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span id="modalTitle">Add Vehicle Details</span>
+                        <span class="close" onclick="closeModal()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="vehicleId">
+                        <label>Select Brand
+                            <select id="brand" onchange="brandChange(value)">
+                                <option value="" selected disabled>Select Vehicle</option>
+                                <option value="toyota">Toyota</option>
+                                <option value="nissan">Nissan</option>
+                                <option value="honda">Honda</option>
+                                <option value="mazda">Mazda</option>
+                            </select>
+                            <span id="brandmsg" class="form-error">Brand Required.</span>
+                        </label>
+                        <label>Select Model
+                            <select id="model">
+                                <option value="" selected disabled>Select Model</option>
+                            </select>
+                            <span id="modelmsg" class="form-error">Model Required.</span>
+                        </label>
+                        <label>
+                            Description
+                            <textarea id="description" placeholder="Vehicle Description" rows="5"></textarea>
+                            <span id="descriptionmsg" class="form-error">Description Required.</span>
+                        </label>
+                        <label>No of Seats
+                            <input type="number" id="seatnumber" placeholder="No of seats">
+                            <span id="seatnumbermsg" class="form-error">No of Seats Required.</span>
+                        </label>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="alert button" onclick="closeModal()">Close</button>
+                        <button class="primary button" id="modalAddBtn" onclick="validateForm()">Add Vehicle</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="grid-container full">
+        &copy; 2021
+    </footer>
+</div>
+<script src="index.js"></script>
+</body>
+</html>

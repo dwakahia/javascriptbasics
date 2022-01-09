@@ -1,0 +1,17 @@
+{
+  "name": "javascript-crud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch scss -o css"
+  },
+  "author": "dwakahia",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "foundation-sites": "^6.7.4",
+    "node-sass": "^7.0.1"
+  }
+}

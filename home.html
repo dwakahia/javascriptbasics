@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="grid-container" style="padding: 30px 0">
+    <p>Features Show Case</p>
+    <hr>
+    <div>
+        <button class="button" onclick="showSayHae()">Say Hae</button>
+    </div>
+    <div>
+        <form name="myForm" method="post">
+            <label>
+                First Name:
+                <input type="text" name="fname">
+            </label>
+            <label>
+                Second Name:
+                <input type="text" name="sname">
+            </label>
+            <input class="button" onclick="validateForm()" value="Submit">
+        </form>
+    </div>
+
+    <div class="grid-x">
+        <div class="cell small-6">
+            <button class="button alert" onclick="setGuestDetails()">Show Guest Details</button>
+        </div>
+        <div class="cell small-6">
+            <button class="button success" onclick="setStaffDetails()">Show Staff Details</button>
+        </div>
+    </div>
+    <hr>
+    <p>Strict</p>
+    <p>open developer tools to see error via strict mode</p>
+    <div class="grid-x">
+        <div class="cell small-6">
+            <button class="button alert" onclick="strictFunction()">Strict</button>
+        </div>
+        <div class="cell small-6">
+            <button class="button success" onclick="nonStrictFunction()">Not Strict</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    function strictFunction(){
+
+        "use strict";
+
+        x = 'name';
+        alert(x);
+    }
+
+    function nonStrictFunction(){
+
+        x = 'name';
+
+        alert(x);
+    }
+
+    class CommonPerson {
+
+        constructor() {
+            var age;
+            this.greeting = 'Hi friend';
+        }
+
+
+        getAge() {
+            return this.age;
+        }
+
+        setAge(age) {
+            this.age = age;
+        }
+    }
+
+    class Staff extends CommonPerson {
+
+        constructor() {
+            super();
+            this.role = 'I am a  staff';
+        }
+    }
+
+
+    class Guest extends CommonPerson {
+
+        constructor() {
+            super();
+            this.role = 'I am a guest';
+        }
+    }
+
+    function setGuestDetails() {
+        var guest = new Guest();
+        guest.setAge(30);
+        alert(guest.greeting + '\n' + guest.role + '\n' + 'My age is ' + guest.getAge())
+
+    }
+
+    function setStaffDetails() {
+        var staff = new Staff();
+        staff.setAge(35);
+        alert(staff.greeting + '\n' + staff.role + '\n' + 'My age is ' + staff.getAge())
+    }
+
+
+    function showSayHae() {
+
+
+        function getGreeting() {
+            const greetings = ['Hae', 'Hello', 'Hi', 'What\'s up'];
+            console.log(greetings.length);
+            var greetingIndex = getRandomInt(0, greetings.length);
+            console.log(greetingIndex);
+            return greetings[greetingIndex];
+        }
+
+        alert(getGreeting() + '! guest');
+    }
+
+    //generate a random number between zero (inclusive) and the greetings array length (exclusive)
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * max) + min;
+    }
+
+    function Person(firstName, lastName) {
+        this.lastname = lastName;
+        this.firstname = firstName;
+    }
+
+    Person.prototype.fullname = function () {
+        return this.firstname + ' ' + this.lastname;
+    }
+
+
+    function validateForm() {
+        var firstName = document.forms["myForm"]["fname"].value;
+        var secondName = document.forms["myForm"]["sname"].value;
+
+        if (firstName === "" || secondName === "") {
+            alert('First name and last name required');
+        } else {
+            var newPerson = new Person(firstName, secondName);
+            alert('Your Full Name is ' + newPerson.fullname())
+        }
+    }
+
+</script>
+</body>
+</html>

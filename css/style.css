@@ -19,7 +19,7 @@ nav {
   background-color: #2D3840;
   padding: 30px 15px;
   width: 100%; }
-  nav p {
+  nav span {
     color: #ffffff;
     font-size: 20px;
     font-weight: bold;
@@ -29,13 +29,16 @@ nav {
   padding-bottom: 100px; }
 
 @media only screen and (max-width: 600px) {
-  nav p {
+  nav span {
     text-align: center; } }
 
 .search button {
   font-weight: bold; }
   .search button i {
     margin-left: 10px; }
+
+.addVehicleText {
+  display: none; }
 
 @media only screen and (min-width: 600px) {
   .search {
@@ -153,3 +156,43 @@ footer {
   .card .button-section {
     display: flex;
     justify-content: space-around; }
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
+  animation: spin 2s linear infinite; }
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg); } }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+.loader-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0; }
+
+.loader {
+  display: none; }
+
+.result {
+  margin-left: 20px;
+  font-size: 20px;
+  font-weight: bold; }

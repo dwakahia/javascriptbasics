@@ -288,3 +288,71 @@ window.onclick = function (event) {
     }
 }
 
+function mouseOverEvent() {
+    alert('This is a vehicle listing site');
+}
+
+function onPageLoad() {
+    alert('Good to see you!');
+}
+
+function onBeforeUnload() {
+    return confirm('Do you wanna leave?');
+}
+
+let addButton = document.getElementById('addVehicle');
+let addVehicleText = document.getElementById('addVehicleText');
+
+addButton.addEventListener('mouseover', function () {
+    addVehicleText.style.display = 'block';
+})
+
+addButton.addEventListener('mouseout', function () {
+    addVehicleText.style.display = 'none';
+})
+
+const anEvent = new Event('start');
+
+document.addEventListener('start', event => {
+    loader.style.display = 'block';
+})
+
+let searchTxt = document.getElementById('searchTxt');
+let loader = document.getElementById('loader');
+
+
+searchTxt.addEventListener('keyup', function () {
+    document.dispatchEvent(anEvent)
+});
+
+
+loader.addEventListener('mouseover', function () {
+    loader.style.display = 'none';
+});
+
+
+let result = document.getElementById('result');
+
+function firePromise() {
+    const myPromise = new Promise((resolve, reject) => {
+        let a = false;
+        setTimeout(() => {
+            return (a) ? resolve('a is found!') : reject('sorry, no a');
+        }, 3000);
+    });
+
+    myPromise
+        .then(value => {
+            result.innerHTML = value.toString()
+        })
+        .catch(err => {
+            result.innerHTML = err
+        });
+}
+
+// var name = 'dennis';
+//
+// name = 34;
+//
+// console.log(name)
+

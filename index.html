@@ -6,23 +6,33 @@
     <title>vehicles list</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body onload="onPageLoad()" onbeforeunload="onBeforeUnload()">
 <div class="main">
     <nav class="grid-container full">
-        <p>Vehicles List</p>
+        <span onmouseover="mouseOverEvent()">Vehicles List</span>
     </nav>
     <div class="grid-container wrapper">
         <div class="grid-x search">
             <div class="cell small-12 large-4">
-                <button class="primary button" onclick="openModal()">Add Vehicle <i class="fa fa-plus"></i></button>
+                <button class="primary button" id="addVehicle" onclick="openModal()">Add Vehicle <i
+                        class="fa fa-plus"></i></button>
+                <p id="addVehicleText" class="addVehicleText">You are about to add a vehicle</p>
             </div>
             <div class="cell small-12 large-8">
                 <div class="input-group">
                     <span class="input-group-label"><i class="fa fa-search"></i></span>
-                    <input class="input-group-field" onkeyup="showVehicles(this.value)" placeholder="Search vehicle"
+                    <input id="searchTxt" class="input-group-field" onkeyup="showVehicles(this.value)"
+                           placeholder="Search vehicle"
                            type="text">
                 </div>
             </div>
+        </div>
+        <div class="grid-x loader-wrapper">
+            <div class="loader" id="loader"></div>
+        </div>
+        <div class="grid-x">
+            <button class="button primary" onclick="firePromise()">Add</button>
+            <span class="result" id="result"></span>
         </div>
         <div>
             <table class="hover">
